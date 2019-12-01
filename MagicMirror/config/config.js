@@ -30,10 +30,6 @@ var config = {
 			module: "alert",
 		},
 		{
-			module: "updatenotification",
-			position: "top_bar"
-		},
-		{
 			module: "clock",
 			position: "top_left"
 		},
@@ -45,7 +41,7 @@ var config = {
 				calendars: [
 					{
 						symbol: "calendar-check",
-						url: "webcal://www.calendarlabs.com/ical-calendar/ics/76/US_Holidays.ics"					}
+						url: "https://calendar.google.com/calendar/ical/hurl2471%40kettering.edu/private-8604eeef944ffd8edb8bfd51f82afc58/basic.ics"					}
 				]
 			}
 		},
@@ -87,6 +83,17 @@ var config = {
 				broadcastNewsFeeds: true,
 				broadcastNewsUpdates: true
 			}
+		},
+		{
+		  module: "MMM-NowPlayingOnSpotify",
+		  position: "top_left",
+
+		  config: {
+		    clientID: "347a3344716b4e25b63f661462ffa0bd",
+		    clientSecret: "64178e8cb42b453bb720d8d404500c57",
+		    accessToken: "BQBqK720L7lmtVA3w0YabxPwFU77GkXwjFqss8b34e__ZBsOKwOF6Mp3wnsFo-wyjhIUdBDIhipgFiehhFH5NzEi4P1OKIGzY_ADjnYtdoNEOiErqkWGUtstXKZqvWVUby1sA1oPAVzmZCRheriDgzdM",
+		    refreshToken: "AQC5_ffePgMwZx3JdWR-6CPoPtn-butLdozcAWvsOeNxqd1djiotaW3Cr4POCx8AieVTHAXBHwa3uAl4eW9ENkiBX3Ex6WZlJMY-krlZIkGsk6SFG0JS_8e4BseUL72Nw9w"
+		  }
 		},
 	]
 
