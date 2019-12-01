@@ -1,0 +1,13 @@
+{% extends "layout.html" %}
+{% block title %} Configuration {% endblock %}
+{% block body %}
+<dl>
+  <dt>Snooze Time</dt>
+  <dd>{{ config_data["snooze"] }}</dd>
+  <dt>Max Active Time</dt>
+  <dd>{{ config_data["max-active"] }}</dd>
+</dl>
+<form action='/' method='POST'>
+  <input class='button-primary submit' name='submit' type='submit' value='Configure'>
+</form>
+{% endblock %}

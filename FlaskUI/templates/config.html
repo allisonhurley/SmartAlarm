@@ -1,0 +1,15 @@
+{% extends "layout.html" %}
+{% block title %} Configuration {% endblock %}
+{% block body %}
+<form action='/config' method='POST'>
+  <label for='snooze'>Snooze Time</label>
+  <input class='u-full-width' id='snooze' name='snooze' value="{{ config_data["snooze"] }}">
+
+  <label for='max-active'>Max Active Time</label>
+  <input class='u-full-width' id='max-active' name='max-active' value="{{ config_data["max-active"] }}">
+
+  <input class='button-primary submit' name='submit' type='submit' value='Update'>
+  <input class='button-primary cancel' name='cancel' type='submit' value='Cancel'>
+</form>
+
+{% endblock %}
