@@ -17,6 +17,6 @@ while True:
 
     elif i==1: #When output from motion sensor is HIGH
 
-        print "Intruder detected",i
+`       rpi-hdmi off #turn hdmi port off when beam is broken
 
         time.sleep(0.1)
