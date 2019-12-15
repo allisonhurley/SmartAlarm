@@ -1,5 +1,6 @@
 # Various Node ignoramuses.
 
+google.api
 screenoff
 logs
 *.log

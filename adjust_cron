@@ -15,7 +15,12 @@ config = ()
 with open('config.json') as json_file:
     config = json.load(json_file)
 
-gmaps = googlemaps.Client(key='AIzaSyCZGti8RgBSbbyHgCsskyKNUlB4my7CkrA')
+api_key = ''
+with open('google.api') as kf:
+    api_key = kf.read()
+gmaps = googlemaps.Client(key=api_key)
+
+#gmaps = googlemaps.Client(key='AIzaSyCZGti8RgBSbbyHgCsskyKNUlB4my7CkrA')
 
 reverse_geocode_result = gmaps.reverse_geocode((40.714224, -73.961452))
 
