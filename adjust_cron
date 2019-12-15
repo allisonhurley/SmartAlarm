@@ -60,7 +60,10 @@ directions_result = gmaps.directions(config['start_location'],
 
 travel_seconds = directions_result[0]['legs'][0]['duration']['value']
 
-wake_time = begin - datetime.timedelta(seconds=travel_seconds) - datetime.timedelta(minutes=config['get_ready_time']) - datetime.timedelta(minutes=config['snooze_time']) - datetime.timedelta(minutes=config['parking_time'])
+wake_time = begin - datetime.timedelta(seconds=travel_seconds)
+wake_time = wake_time - datetime.timedelta(minutes=int(config['get_ready_time']))
+wake_time = wake_time - datetime.timedelta(minutes=int(config['snooze_time']))
+wake_time = wake_time - datetime.timedelta(minutes=int(config['parking_time']))
 
 cron = CronTab(user=True)
 found = False
