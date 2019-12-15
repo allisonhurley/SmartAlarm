@@ -1,4 +1,12 @@
 #!/bin/bash
 
-vcgencmd display_power 1
+# vcgencmd display_power 0
+
+export DISPLAY=:0
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
+
+rm -f $DIR/screenoff
+xset s reset
+$DIR/volume_on
+
 

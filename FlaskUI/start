@@ -1,8 +1,10 @@
 #!/bin/bash
 
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 export FLASK_APP=flaskui.py
 export FLASK_ENV=development
 
 # note must run as root to use port 80
-flask run -h 0.0.0.0 -p 80
+cd $DIR
+sudo -E flask run -h 0.0.0.0 -p 80
 

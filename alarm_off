@@ -1,4 +1,14 @@
 #!/bin/bash
 
-vcgencmd display_power 0
+# vcgencmd display_power 0
+export DISPLAY=:0
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 
+if test -f "$DIR/screenoff" ; then
+    echo Chill, already off
+else
+    xset s reset
+    xset s activate
+    $DIR/volume_off
+    touch $DIR/screenoff
+fi

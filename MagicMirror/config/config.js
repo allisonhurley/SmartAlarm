@@ -98,7 +98,7 @@ var config = {
 				locationID: "4062523",  //ID from http://bulk.openweathermap.org/sample/city.list.json.gz; unzip the gz file and find your city
 				appid: "YOUR_OPENWEATHER_API_KEY"
 			}
-		}//,
+		},
 		// {
 		// 	module: "newsfeed",
 		// 	position: "bottom_bar",
@@ -129,16 +129,22 @@ var config = {
 		//   }
 		// },
 
-		// //to show a video as the alarm - currently isn't playing anything 
-		// {
-		// 	module: "MMM-EmbedYoutube", // Path to youtube module from modules folder Exmaple: MagicMirror/modules/custom/MMM-EmbedYoutube/ so it's custom/MMM-EmbedYoutube
-		// 	position: "top_right",	// This can be any of the regions.
-		// 	config: {
-		// 		// See 'Configuration options' in README.md for more information.
-		// 		video_id: "MlGBFXiC00",
-		// 		loop: true
-		// 	}
-		// }
+		    	{
+		module: 'MMM-iFrame-Ping',
+		// position: 'middle_center',	// This can be any of the regions.
+		position: 'top_right',	// This can be any of the regions.
+		config: {
+			// See 'Configuration options' for more information.
+			url: "https://www.youtube.com/embed/8sUOvDzmrks?autoplay=1&loop=1&playlist=8sUOvDzmrks", //url to display
+			width:"1200px",
+			autoRefresh: false, //set to false for video
+			updateInterval: 1, //in min. Only if autoRefresh: true
+			displayLastUpdate: true,
+			height: "700px", //Optional. Default: 100px
+			scrolling: "no"
+			}
+	},
+
 	]
 
 };

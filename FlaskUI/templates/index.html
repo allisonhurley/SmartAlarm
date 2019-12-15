@@ -3,11 +3,21 @@
 {% block body %}
 <dl>
   <dt>Snooze Time</dt>
-  <dd>{{ config_data["snooze"] }}</dd>
-  <dt>Max Active Time</dt>
-  <dd>{{ config_data["max-active"] }}</dd>
+  <dd>{{ config_data["snooze_time"] }}</dd>
+  <dt>Start Location</dt>
+  <dd>{{ config_data["start_location"] }}</dd>
+  <dt>Get Ready Time</dt>
+  <dd>{{ config_data["get_ready_time"] }}</dd>
+  <dt>Default Alarm Time</dt>
+  <dd>{{ config_data["default_alarm_time"] }}</dd>
 </dl>
 <form action='/' method='POST'>
   <input class='button-primary submit' name='submit' type='submit' value='Configure'>
+</form>
+<form action='/on' method='POST'>
+  <input class='button-primary submit' name='on' type='submit' value='On'>
+</form>
+<form action='/off' method='POST'>
+  <input class='button-primary submit' name='off' type='submit' value='Off'>
 </form>
 {% endblock %}

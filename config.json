@@ -1,7 +1,1 @@
-{
-  "start_location": "2121 Cartier Flint MI",
-  "snooze_time": 40,
-  "get_ready_time": 3,
-  "parking_time": 5,
-  "default_alarm_time": "12:00"
-}
+{"snooze_time": "40", "start_location": "2121 Cartier Flint MI", "get_ready_time": "4", "default_alarm_time": "12:00", "submit": "Update"}
