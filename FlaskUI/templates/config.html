@@ -1,22 +1,28 @@
 {% extends "layout.html" %}
-{% block title %} Configuration {% endblock %}
+{% block title %} Configurations {% endblock %}
 {% block body %}
 <form action='/config' method='POST'>
-  <label for='snooze_time'>Snooze Time</label>
-  <input class='u-full-width' id='snooze_time' name='snooze_time' value="{{ config_data["snooze_time"] }}">
+  <label for='snooze_time' style="color: blue; font-size: 24px;">Snooze Time</label>
+  <p style="margin-left: 25px; margin-bottom: 0px; color: black; font-size: 18px;">How long you would like to sleep for once the intial timer goes off.</p>
+  <input style = "margin-left: 25px; color: gray; font-size: 16px;" class='resizedTextbox' id='snooze_time' name='snooze_time' value="{{ config_data["snooze_time"] }}">
 
-  <label for='start_location'>Start Location</label>
-  <input class='u-full-width' id='start_location' name='start_location' value="{{ config_data["start_location"] }}">
+  <label for='start_location' style="color: blue; font-size: 24px;">Start Location</label>
+  <p style="margin-left: 25px; margin-bottom: 0px; color: black; font-size: 18px;">The location you will be leaving from.</p>
+  <input style= "margin-left: 25px; color: gray; font-size: 16px;" class='resizedTextbox' id='start_location' name='start_location' value="{{ config_data["start_location"] }}">
 
-  <label for='get_ready_time'>Get Ready Time</label>
-  <input class='u-full-width' id='get_ready_time' name='get_ready_time' value="{{ config_data["get_ready_time"] }}">
+  <label for='get_ready_time' style="color: blue; font-size: 24px;">Time Needed to Get Ready</label>
+  <p style="margin-left: 25px; margin-bottom: 0px; color: black; font-size: 18px;">Time it takes for you to get ready. (Eating, showering, dressing, etc)</p>
+  <input style = "margin-left: 25px; color: gray; font-size: 16px;" class='resizedTextbox' id='get_ready_time' name='get_ready_time' value="{{ config_data["get_ready_time"] }}">
 
-  <label for='parking_time'>Parking Time</label>
-  <input class='u-full-width' id='parking_time' name='parking_time' value="{{ config_data["parking_time"] }}">
+  <label for='parking_time' style="color: blue; font-size: 24px;">Parking Time</label>
+  <p style="margin-left: 25px; margin-bottom: 0px; color: black; font-size: 18px;">Time it takes to find a parking spot once you reach your destination.</p>
+  <input style = "margin-left: 25px; color: gray; font-size: 16px;" class='resizedTextbox' id='parking_time' name='parking_time' value="{{ config_data["parking_time"] }}">
 
-  <label for='default_alarm_time'>Default Alarm Time</label>
-  <input class='u-full-width' id='default_alarm_time' name='default_alarm_time' value="{{ config_data["default_alarm_time"] }}">
+  <label for='default_alarm_time' style="color: blue; font-size: 24px;">Default Alarm Time</label>
+  <p style="margin-left: 25px; margin-bottom: 0px; color: black; font-size: 18px;">If there is no calendar event, alarm will default to this.</p>
+  <input  style = "margin-left: 25px; color: gray; font-size: 16px;" class='resizedTextbox' id='default_alarm_time' name='default_alarm_time' value="{{ config_data["default_alarm_time"] }}">
 
+  <br><br>
   <input class='button-primary submit' name='submit' type='submit' value='Update'>
   <input class='button-primary cancel' name='cancel' type='submit' value='Cancel'>
 </form>

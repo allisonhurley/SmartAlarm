@@ -1,25 +1,33 @@
 {% extends "layout.html" %}
-{% block title %} Configuration {% endblock %}
+{% block title %} Main Page {% endblock %}
 {% block body %}
 <dl>
-  <dt>Snooze Time</dt>
-  <dd>{{ config_data["snooze_time"] }}</dd>
-  <dt>Start Location</dt>
-  <dd>{{ config_data["start_location"] }}</dd>
-  <dt>Get Ready Time</dt>
-  <dd>{{ config_data["get_ready_time"] }}</dd>
-  <dt>Parking Time</dt>
-  <dd>{{ config_data["parking_time"] }}</dd>
-  <dt>Default Alarm Time</dt>
-  <dd>{{ config_data["default_alarm_time"] }}</dd>
+  <dt style="color: blue; font-size: 24px;">Snooze Time</dt>
+  <dd style="color: black; font-size: 18px;">{{ config_data["snooze_time"] }}</dd>
+  <dt style="color: blue; font-size: 24px;">Start Location</dt>
+  <dd style="color: black; font-size: 18px;">{{ config_data["start_location"] }}</dd>
+  <dt style="color: blue; font-size: 24px;">Time Needed to Get Ready</dt>
+  <dd style="color: black; font-size: 18px;">{{ config_data["get_ready_time"] }}</dd>
+  <dt style="color: blue; font-size: 24px;">Parking Time</dt>
+  <dd style="color: black; font-size: 18px;">{{ config_data["parking_time"] }}</dd>
+  <dt style="color: blue; font-size: 24px;">Default Alarm Time</dt>
+  <dd style="color: black; font-size: 18px;">{{ config_data["default_alarm_time"] }}</dd>
 </dl>
+<br>
+<br>
 <form action='/' method='POST'>
   <input class='button-primary submit' name='submit' type='submit' value='Configure'>
 </form>
-<form action='/on' method='POST'>
-  <input class='button-primary submit' name='on' type='submit' value='On'>
-</form>
-<form action='/off' method='POST'>
-  <input class='button-primary submit' name='off' type='submit' value='Off'>
-</form>
+<div style="display:flex;">
+  <div class="on-b" style="margin-right: 5px;">
+  <form action='/on' method='POST'>
+    <input class='button-primary submit' name='on' type='submit' value='On'>
+  </form>
+  </div>
+  <div class ="off-b" style="margin-left: 5px;">
+  <form action='/off' method='POST'>
+    <input class='button-primary submit' name='off' type='submit' value='Off'>
+  </form>
+  </div>
+</div>
 {% endblock %}
