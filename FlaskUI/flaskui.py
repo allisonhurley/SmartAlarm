@@ -33,6 +33,7 @@ def config():
             config_data = request.form
             with open("/home/pi/SmartAlarm/config.json", "w") as out:
                 out.write(json.dumps(request.form))
+            subprocess.run(["/home/pi/SmartAlarm/adjust_cron"])
         return redirect("/")
     return render_template("config.html", config_data=config_data)
 

@@ -15,6 +15,30 @@ config = ()
 with open('config.json') as json_file:
     config = json.load(json_file)
 
+utc=pytz.UTC
+est=pytz.timezone('EST')
+
+now = datetime.datetime.now()
+now = now.replace(tzinfo=est)
+
+if config['default_alarm_time'] > "":
+    wake_time = datetime.datetime.strptime(config['default_alarm_time'], '%H:%M')
+    wake_time = wake_time.replace(year=now.year, month=now.month, day=now.day)
+    cron = CronTab(user=True)
+    found = False
+    for cmd in cron.find_command("/home/pi/SmartAlarm/alarm_on"):
+        cmd.minute.on(wake_time.minute)
+        cmd.hour.on(wake_time.hour)
+        found = True
+
+    if not found:
+        job = cron.new("/home/pi/SmartAlarm/alarm_on")
+        job.minute.on(wake_time.minute)
+        job.hour.on(wake_time.hour)
+
+    cron.write()
+    exit()
+
 api_key = ''
 with open('google.api') as kf:
     api_key = kf.read()
@@ -24,11 +48,9 @@ gmaps = googlemaps.Client(key=api_key)
 
 reverse_geocode_result = gmaps.reverse_geocode((40.714224, -73.961452))
 
-utc=pytz.UTC
-est=pytz.timezone('EST')
-
 url = "https://calendar.google.com/calendar/ical/hurl2471%40kettering.edu/private-8604eeef944ffd8edb8bfd51f82afc58/basic.ics"
 c = Calendar(requests.get(url).text)
+print("Collected all events")
 
 now = datetime.datetime.now()
 now = now.replace(tzinfo=est)
@@ -38,14 +60,19 @@ for ev in c.timeline:
     begin = ev.begin #.replace(tzinfo=utc)
     if (begin > now):
         begin = begin.astimezone(est)
+        print("Found event: " + ev.name)
+        print("         at: " + str(ev.begin))
         if (begin.hour < 13):
             wake_event = ev
             break
 
-if isinstance(wake_event, str) or wake_event.begin.day != now.day:
+# if isinstance(wake_event, str) or wake_event.begin.day != now.day:
+     
+if isinstance(wake_event, str): 
     wake_event = Struct()
     wake_event.name = "Default Alarm"
-    wake_event.begin = datetime.datetime.strptime(config['default_alarm_time'], '%H:%M')
+    #wake_event.begin = datetime.datetime.strptime(config['default_alarm_time'], '%H:%M')
+    wake_event.begin = datetime.datetime.strptime("11:00", '%H:%M')
     wake_event.begin = wake_event.begin.replace(year=now.year, month=now.month, day=now.day)
     wake_event.location = config['start_location']
 

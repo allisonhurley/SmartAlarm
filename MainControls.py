@@ -17,7 +17,7 @@ class Mode(Enum):
 GPIO.setwarnings(False)
 GPIO.setmode(GPIO.BOARD)
 GPIO.setup(11, GPIO.IN)         #Read output from PIR motion sensor
-GPIO.setup(13, GPIO.IN)         #Read output from PIR motion sensor
+GPIO.setup(13, GPIO.IN, pull_up_down=GPIO.PUD_DOWN) # setup snooze button
 GPIO.setup(3, GPIO.OUT)         #LED output pin
 
 mixer = alsaaudio.Mixer('PCM')
@@ -32,6 +32,10 @@ while True:
     now = datetime.datetime.now()
     motion_detected = GPIO.input(11) == 1
     snooze_pressed = GPIO.input(13) == 1
+
+    print("mode: " + str(mode))
+    print("motion: " + str(motion_detected))
+    print("snooze: " + str(snooze_pressed))
 
     if mode == Mode.Sleep:
         # check to see if file screenoff has been deleted
@@ -48,11 +52,7 @@ while True:
         elif snooze_pressed:
             mode = Mode.Snooze
             unsnooze = now + datetime.timedelta(minutes=1)
-            mixer.setvolume(0)
-            time.sleep(0.1)
-            mixer.setvolume(0)
-            time.sleep(0.1)
-            mixer.setvolume(0)
+            subprocess.run(["/home/pi/SmartAlarm/volume_off"])
 
     elif mode == Mode.Snooze:
 
@@ -62,7 +62,7 @@ while True:
             mode = Mode.Sleep
 
         if now > unsnooze:
-            mixer.setvolume(100)
+            subprocess.run(["/home/pi/SmartAlarm/volume_on"])
             mode = Mode.Awake
 
     time.sleep(0.1)
